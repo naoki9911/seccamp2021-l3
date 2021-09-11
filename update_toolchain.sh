@@ -26,16 +26,13 @@ function finally() {
 SCRIPT_DIR=$(cd $(dirname $0);pwd)
 cd $SCRIPT_DIR
 
-sudo apt-get update && sudo apt-get install -y \
-    build-essential git curl software-properties-common openjdk-11-jre \
-    cmake clang clang-9 bison flex libreadline-dev \
-    gawk tcl-dev libffi-dev graphviz xdot pkg-config python3 libboost-system-dev \
-    libboost-python-dev libboost-filesystem-dev zlib1g-dev yosys
-git clone --recursive https://github.com/virtualsecureplatform/Iyokan
+rm -rf Iyokan-L1
 
-cd ../Iyokan
+cd Iyokan
+git pull origin master
+git submodule update --recursive
+rm -rf build
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ ..
 make -j$(nproc)
-
