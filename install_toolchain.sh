@@ -33,7 +33,7 @@ sudo apt-get update && sudo apt-get install -y \
     libboost-python-dev libboost-filesystem-dev zlib1g-dev yosys
 git clone --recursive https://github.com/virtualsecureplatform/Iyokan
 
-cd ../Iyokan
+cd Iyokan
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ ..
